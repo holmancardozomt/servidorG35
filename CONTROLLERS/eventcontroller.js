@@ -1,20 +1,24 @@
+//ACÁ IMPORTAMOS MI MODELO EVENTOS
 import {evento} from '../MODELS/evento.js';
 
+//REGISTRAR UN EVENTO EN LA BASE DE DATOS
 export const regevento = (req, res) => {
-    const cevento = evento(req.body);
-    cevento
-      .save()
-      .then((data) => res.json(data))
-      .catch((error) => res.json({ message: error }));
-  };
+  const cevento = evento(req.body);
+  cevento
+    .save()
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+};
 
-  export const mostrareventos = (req,res) => {
+//MOSTRAR UN EVENTO EN LA BASE DE DATOS
+export const mostrareventos = (req,res) => {
   evento
   .find()
   .then((data) => res.json(data) )
   .catch((error) => res.json ({ message: error}))    
   }
 
+//MOSTRAR UN EVENTO ESPECIFICO
   export const onlyevento =(req,res) => {
     const { id } = req.params;
     evento
@@ -24,6 +28,7 @@ export const regevento = (req, res) => {
 
   }
 
+//ACTUALIZAR UN EVENTO EN LA BASE DE DATOS 
   export const upevento = (req,res) => {
     const {id} = req.params;
     const {fecha, equipo1, equipo2, marcador1,marcador2,tipoevento} = req.body
@@ -32,7 +37,8 @@ export const regevento = (req, res) => {
     .then((data) => res.json(data) )
     .catch((error) => res.json({message: error}))
   }
-
+  
+//BORRAR UN EVENTO EN LA BASE DE DATOS
   export const delevento = (req,res) => {
     const {id} = req.params;
     evento

@@ -1,7 +1,7 @@
 import express from 'express';
 import { regusuario, mostrarusuarios, onlyuser, upusuario, delusuario } from '../CONTROLLERS/usercontroller.js'
 import { regevento, mostrareventos, onlyevento, upevento, delevento } from '../CONTROLLERS/eventcontroller.js'
-
+import {login} from '../CONTROLLERS/logincontroller.js'
 export const router = express.Router();
 import { db } from '../mongodb.js'
 
@@ -13,6 +13,7 @@ router.get('/shuser', mostrarusuarios);
 router.get('/shuser/:id', onlyuser);
 router.put('/upuser/:id', upusuario);
 router.delete('/delete/:id', delusuario);
+
 
 
              //RUTAS PARA EVENTOS

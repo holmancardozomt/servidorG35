@@ -1,9 +1,11 @@
-import dotenv from "dotenv";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 dotenv.config();
 
-export const db = mongoose.connect(process.env.KEYMONGODB).then(()=> {
-console.log("😎 LA CONEXIÓN FUE REALIZADA 🚀 CON ÉXITO A LA BASE DE DATOS:🛸")
-}).catch((error) => console.error("PROBLEMAS AL CONECTAR A LA BASE DE DATOS MONGODB 🥵", error));
+export const db =  mongoose.connect(process.env.KEY_MONGODB).then(()=> {
+    console.log(" 😎La conexion fue realizada 🚴‍♀️ con exito a la bd:🚀 ")
+}).catch((error) => console.error("Problemas al conectar a la Base de datos de Mongodb🥵",error));
 
-export default db;  
+
+
+export default db;
