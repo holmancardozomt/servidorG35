@@ -2,17 +2,18 @@ import express from 'express';
 import { regusuario, mostrarusuarios, onlyuser, upusuario, delusuario } from '../CONTROLLERS/usercontroller.js'
 import { regevento, mostrareventos, onlyevento, upevento, delevento } from '../CONTROLLERS/eventcontroller.js'
 import {login} from '../CONTROLLERS/logincontroller.js'
-export const router = express.Router();
 import { db } from '../mongodb.js'
-
+import {requireToken} from '../Midlewares/autorizacion.js'
+export const router = express.Router();
 
               //RUTAS PARA USUARIOS
 
 router.post('/regusuario', regusuario);
-router.get('/shuser', mostrarusuarios);
+router.get('/shuser', requireToken,mostrarusuarios);
 router.get('/shuser/:id', onlyuser);
 router.put('/upuser/:id', upusuario);
 router.delete('/delete/:id', delusuario);
+router.post('/login', login);
 
 
 
@@ -24,7 +25,7 @@ router.post('/regevento', regevento);
 
 //MOSTRAR TODOS LOS EVENTOS DEPORTIVOS
 
-router.get('/mostrareventos', mostrareventos);
+router.get('/mostrareventos', requireToken,mostrareventos);
 
 //MOSTRAR UN SOLO EVENTO
 
@@ -45,7 +46,7 @@ router.get('/', function (req, res) {
 router.get('/user', (req, res) => {
   res.send('😎Obteniendo información de los usuarios😍')
 })
-router.post('/login', (req, res) => {
+router.post('/login2', (req, res) => {
   res.send('Loguiandome desde Login 😎')
 })
 router.put('/update', (req, res) => {

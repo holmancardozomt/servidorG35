@@ -1,5 +1,5 @@
 import {usuario} from '../MODELS/usuario.js'
-
+import bcrypt from 'bcrypt'
 //REGISTRAR UN USUARIO EN LA BASE DE DATOS
 export const regusuario = (req,res) => {
     const user = usuario(req.body)
@@ -31,7 +31,7 @@ export const onlyuser = (req,res) => {
 //ACTUALIZAR EL USUARIO ESPECIFICO
 export const upusuario = (req,res) => {
     const { id } = req.params;
-    const {nomuser, password, correo}= req.body
+var {nomuser, password, correo}= req.body
     const user = this
 const salt = bcrypt.genSaltSync(12);
 const hash = bcrypt.hashSync(password, salt);
